@@ -9,6 +9,10 @@ public class Room {
     private Room west;
     private ArrayList<Item> items = new ArrayList<>();
 
+    private final ArrayList<Enemy> enemies = new ArrayList<>();
+
+
+
     public Room(String name, String description) {
         this.name = name;
         this.description = description;
@@ -23,7 +27,7 @@ public class Room {
         final String WHITE_BOLD = "\033[1;97m";
         final String RESET_BOLD = "\033[0m";
         String formattedName = WHITE_BOLD + name + RESET_BOLD;
-        return formattedName + "\n" + description + "\n" + "The room items are: " + items;
+        return formattedName + "\n" + description + "\n" + items;
     }
 
 
@@ -63,6 +67,22 @@ public class Room {
         items.add(item);
     }
 
+    public void addFood(Item food){
+        items.add(food);
+    }
+
+    public void addWepons(Item wepons){
+        items.add(wepons);
+    }
+
+    public void addEnemy(Enemy addEnemy){
+        enemies.add(addEnemy);
+    }
+
+    public void removeEnemy(Enemy enemy){
+        enemies.remove(enemy);
+    }
+
     public void removeItem (String itemName){
         items.remove(items);
 
@@ -75,6 +95,18 @@ public class Room {
 
     }
 
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+    public ArrayList<Enemy> getEnemies(){
+        return enemies;
+    }
+
+    public ArrayList<Enemy> enemies(){
+        return enemies;
+    }
+
+
 
     @Override
     public String toString() {
@@ -82,6 +114,7 @@ public class Room {
                 "You have now step into" + " " + name + " "
                         + description + " " + "\n";
     }
+
 
 
 }

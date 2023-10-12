@@ -17,11 +17,11 @@ public class UserInterface {
                 "If you need help simply type 'help'.\n" +
                 "Press 'Enter' to start playing.");
 
+
         keyboard.nextLine();
         adventure.buildMap();
         System.out.println(adventure.getCurrentRoomDescription());
-
-
+        System.out.println(adventure.viewEnemy());
 
         while (true) {
             System.out.println("\n" + "Where do you want to go next?");
@@ -36,25 +36,102 @@ public class UserInterface {
                     }
 
                 case "help":
-                case "h":
                     System.out.println("You can move in between rooms by writing 'go north', 'go south', 'go east' and 'go west'\n" +
-                            "Hint: not all rooms are connected! Maybe try a different direction." +
+                            "Not all rooms are connected! Maybe try a different direction." +
                             "Write 'exit' if you want to stop playing, \n" +
-                            "Type 'look' if you want a description of your surroundings and 'take' to pick up an item on your journey.");
+                            "Type 'look' if you want a description of your surroundings and 'take' to pick up an item on your journey. husk navn!!" + "\n" +
+                            "Type 'inventory' to view inventory" + "\n" +
+                            "Type 'take' to take a item in a room" + "\n" +
+                            "Type 'drop' to drop a item in any room" + "\n" +
+                            "Type 'eat' to eat food in any room" + "\n" +
+                            "Type 'health' to see health point" + "\n" +
+                            "Type 'equip' to equip a weapon in any room" + "\n" +
+                            "Type 'attack' to ATTACK A ENEMY!");
                     break;
 
-                case "look":
-                case  "l":
+                case "look", "l":
                     System.out.println(adventure.toString().toLowerCase());
                     System.out.println(" You are in the following room:" + " " + adventure.getCurrentRoomDescription());
                     break;
-
+                case "inventory", "inv":
+                    adventure.player.viewInventory();
+                    break;
                 case "drop":
                     System.out.println("what do you want to drop?");
+                    input = keyboard.nextLine();
+                    adventure.setDropItem(input);
+                    String dropItems = adventure.getDropItems();
+
+                    if (dropItems != null) {
+                        System.out.println("you have dropped" + dropItems);
+                    }
                     break;
 
-                case "take":
+                case "take", "t":
                     System.out.println("What item do you want to take with you?");
+                    input = keyboard.nextLine();
+                    boolean takeItem = adventure.takeItem(input);
+                    if (takeItem) {
+                        System.out.println("you took " + takeItem);
+                    } else {
+                        System.out.println("sorry you can not take" + takeItem);
+                    }
+                    break;
+
+                case "eat", "ea":
+                    System.out.println("What do you want to eat?");
+                    input = keyboard.nextLine();
+                    EatEnum edible = adventure.eatFood(input);
+
+                    if (edible == EatEnum.FOOD_FOUND) {
+                        System.out.println("you have now consumed " + input);
+                        System.out.println("Your health is now: " + adventure.getHealthPoints());
+                        System.out.println(adventure.healthLevelPoint());
+
+                    } else if (edible == EatEnum.FOOD_NOT_EDIBLE) {
+                        System.out.println("You cannot consume " + input);
+                    } else {
+                        System.out.println("This food is not found, sorry..");
+                    }
+                    break;
+                case "health point", "health", "h":
+                    System.out.println("Your health point is now:" + " " + adventure.getHealthPoints());
+                    System.out.println(adventure.healthLevelPoint());
+                    break;
+
+                case "attack":
+                   // Attack attack = adventure.attackEnemy();
+                   // if (attack != null) {
+                        if (adventure.getCurrentWeapon() != null) {
+                            System.out.println("You are attacking with: " + adventure.getCurrentWeapon());
+
+                            if (adventure.getCurrentWeapon() instanceof RangedWeapon) {
+                                if (adventure.getAmmunition() > 0) {
+                                    System.out.println("Ammunition: " + adventure.getAmmunition());
+                                    System.out.println("Use left: " + adventure.getCanUse());
+                                } else {
+                                    System.out.println("You don't have any ammunition left!");
+                                }
+                            } else if (adventure.getCurrentWeapon() instanceof MeleeWeapon) {
+                                System.out.println("The damage: " + adventure.getDamage());
+                            } else {
+                                System.out.println("You don't have any weapon equipped.");
+                            }
+                            return;
+                        }
+
+
+                case "equip", "eq":
+                    System.out.println("what weapons do you want to equip");
+                    input = keyboard.nextLine();
+                    AttackEnum equipAnswer = adventure.equip(input);
+                    if (equipAnswer == AttackEnum.WEAPON_EQUIP) {
+                        System.out.println("You equipped " + input);
+                    } else if (equipAnswer == AttackEnum.WEAPON_NOT_FOUND) {
+                        System.out.println("sorry your weapon is not in your inventory");
+                    } else if (equipAnswer == AttackEnum.WEAPON_NOT_EQUIP) {
+                        System.out.println("your weapon is not equipped");
+                    }
                     break;
 
                 default:
