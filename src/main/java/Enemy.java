@@ -5,6 +5,8 @@ public class Enemy {
     private int enemyhealth;
     private Weapon enemyWeapon;
     private Room currentRoom;
+    private int damage;
+
 
 
     public Enemy(String enemyName,int enemyhealth,Weapon enemyWeapon, Room currentRoom) {
@@ -14,6 +16,9 @@ public class Enemy {
         this.currentRoom = currentRoom;
     }
 
+    public int getDamage() {
+        return damage;
+    }
 
     public String getEnemyName() {
         return enemyName;
@@ -47,13 +52,16 @@ public class Enemy {
         this.currentRoom = currentRoom;
     }
 
-    public boolean Dead() {
-        if (enemyhealth <= 0) {
-            return true;
-        } else {
-            return false;
+
+
+    public void reduceHealth(int damage) {
+       enemyhealth -= damage;
+        if (enemyhealth < 0) {
+            enemyhealth= 0;
         }
     }
+
+
 
     @Override
     public String toString() {

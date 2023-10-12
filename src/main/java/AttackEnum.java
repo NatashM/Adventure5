@@ -6,5 +6,11 @@ public enum AttackEnum {
     WEAPON_NOT_FOUND,
     ATTACK_NO_AMO,
     ATTACK_NO_WEAPON,
+    ATTACK_SUCCESS,
+    ATTACK_FAILURE,
+    PLAYER_DEAD,
+    ENEMY_DEAD,
+    PLAYER_SUCCESS
 
-}
+
+    }

@@ -100,27 +100,35 @@ public class UserInterface {
                     break;
 
                 case "attack":
-                   // Attack attack = adventure.attackEnemy();
-                   // if (attack != null) {
-                        if (adventure.getCurrentWeapon() != null) {
-                            System.out.println("You are attacking with: " + adventure.getCurrentWeapon());
-
-                            if (adventure.getCurrentWeapon() instanceof RangedWeapon) {
-                                if (adventure.getAmmunition() > 0) {
-                                    System.out.println("Ammunition: " + adventure.getAmmunition());
-                                    System.out.println("Use left: " + adventure.getCanUse());
-                                } else {
-                                    System.out.println("You don't have any ammunition left!");
-                                }
-                            } else if (adventure.getCurrentWeapon() instanceof MeleeWeapon) {
-                                System.out.println("The damage: " + adventure.getDamage());
+                    input = keyboard.nextLine();
+                    Enemy enemy = adventure.getPlayer().FindEnemyInRoom(input);
+                    if (enemy != null) {
+                        AttackEnum attackPossible = adventure.playerAttack(enemy);
+                        if (attackPossible == AttackEnum.EQUIP_WEAPON_MELEE) {
+                            System.out.println("You attack: " + input);
+                            System.out.println("You dealt damage to " + input + ".");
+                            System.out.println("Your health: " + adventure.getPlayer().getHealthPoint());
+                            if (enemy.getEnemyhealth() > 0) {
+                                System.out.println(input + " health: " + enemy.getEnemyhealth());
                             } else {
-                                System.out.println("You don't have any weapon equipped.");
+                                System.out.println("You defeated " + input + "!");
                             }
-                            return;
+                        } else if (attackPossible == AttackEnum.EQUIP_WEAPON_RANGED) {
+                            System.out.println("You shoot: " + input);
+                            System.out.println("You shoot at " + input + ".");
+                            System.out.println("Your health: " + adventure.getPlayer().getHealthPoint());
+                            if (enemy.getEnemyhealth() > 0) {
+                                System.out.println(input + " health: " + enemy.getEnemyhealth());
+                            } else {
+                                System.out.println("You defeated " + input + "!");
+                            }
+                        } else if (attackPossible == AttackEnum.ATTACK_NO_AMO) {
+                            System.out.println("You have no ammo left.");
                         }
-
-
+                    } else {
+                        System.out.println("No enemy found with the name: " + input);
+                    }
+                    break;
                 case "equip", "eq":
                     System.out.println("what weapons do you want to equip");
                     input = keyboard.nextLine();

@@ -53,9 +53,7 @@ public class Adventure {
         return player.equip(attack);
     }
 
-    public void attackEnemy(String attack) {
-        player.attackEnemy(attack);
-    }
+
 
     public ArrayList<Item> viewInventory() {
         return player.getInventory();
@@ -91,6 +89,24 @@ public class Adventure {
     public int getDamage() {
         return player.getDamage();
     }
+
+    public Player getPlayer(){
+        return player;
+    }
+
+    public AttackEnum playerAttack(Enemy enemy) {
+        return attack(enemy);
+    }
+    public AttackEnum attack(Enemy enemy) {
+        return player.attack(enemy);
+    }
+
+    //public void performAttack(Enemy enemy) {
+    //    AttackEnum result = player.attackEnemy(enemy);
+   // }
+
+
+
 
 
 }

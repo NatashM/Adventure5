@@ -17,6 +17,8 @@ public class Player {
 
     private int damage;
 
+    private int health;
+
     private final ArrayList<Item> inventory;
 
     private final ArrayList<Enemy> enemies = new ArrayList<>();
@@ -37,7 +39,6 @@ public class Player {
     public Weapon getCurrentWeapon() {
         return currentWeapon;
     }
-
 
     public int getHealthPoint() {
         return healthPoint;
@@ -78,6 +79,13 @@ public class Player {
         return enemies;
     }
 
+    public void reduceHealth(int damage) {
+        health -= damage;
+        if (health < 0) {
+            health = 0;
+        }
+    }
+
     public void viewInventory() {
         if (inventory.isEmpty()) {
             System.out.println("There is no item in your inventory..");
@@ -103,8 +111,7 @@ public class Player {
         return false;
     }
 
-    public void viewEnemy(){
-        Room currentRoom = this.currentRoom;
+    public void viewListOfEnemy(){
         ArrayList<Enemy> enemies = currentRoom.getEnemies();
 
         if(enemies.isEmpty()) {
@@ -117,6 +124,15 @@ public class Player {
         }
     }
 
+    public Enemy FindEnemyInRoom(String enemyName) {
+        for (Enemy enemy : currentRoom.getEnemies()) {
+
+            if (enemy.getEnemyName().equalsIgnoreCase(enemyName)) {
+                return enemy;
+            }
+        }
+        return null;
+    }
 
     public void dropItem(String itemName) {
         Item item = FindItem(itemName);
@@ -158,8 +174,6 @@ public class Player {
         return null;
     }
 
-
-
     public EatEnum eatFood(String itemName) {
         Item eatItem = FindItem(itemName);
         if (eatItem == null) {
@@ -189,22 +203,7 @@ public class Player {
     }
 
 
-    public void attackEnemy(String attack) {
-        Item item = FindItem(attack);
-        if (item != null) {
-            System.out.println("You have been attacked.");
-        } else if (currentWeapon == null) {
-            System.out.println("You dont have any weapon");
-        } else if (currentWeapon instanceof RangedWeapon) {
-            RangedWeapon rangedWeapon = (RangedWeapon) currentWeapon;
-            if (rangedWeapon.getAmmunition() <= 0) {
-                System.out.println("You have no more ammunition.");
-        } else if (currentWeapon instanceof MeleeWeapon) {
-            System.out.println("You are attacking with " + currentWeapon + ".");
-        }
-    }
 
-    }
 
     public void setPlayerHealthPoint(int PlayerHealthPoint) {
         this.healthPoint = PlayerHealthPoint;
@@ -256,7 +255,10 @@ public class Player {
 
 
 
-
+    public AttackEnum attack(Enemy enemy) {
+        Attack attack = new Attack(this);
+        return attack.attack(enemy);
+    }
 
 
 /*
