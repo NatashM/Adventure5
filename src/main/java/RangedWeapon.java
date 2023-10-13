@@ -1,12 +1,14 @@
 public class RangedWeapon extends Weapon {
 
     public int ammunition;
+
     int canUse;
 
     public RangedWeapon(String Name, String itemDescription, int ammunition, int canUse) {
         super(Name, itemDescription);
         this.ammunition = ammunition;
         this.canUse = canUse;
+        setAmmunition();
     }
 
 

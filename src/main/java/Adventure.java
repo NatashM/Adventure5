@@ -54,19 +54,17 @@ public class Adventure {
     }
 
 
-
     public ArrayList<Item> viewInventory() {
         return player.getInventory();
     }
 
-    public ArrayList<Enemy> viewEnemy(){
+    public ArrayList<Enemy> viewEnemy() {
         return player.getEnemies();
     }
 
     public Item findItem(String ItemName) {
         return player.FindItem(ItemName);
     }
-
 
 
     public void setCurrentWeapon(Weapon currentWeapon) {
@@ -90,23 +88,16 @@ public class Adventure {
         return player.getDamage();
     }
 
-    public Player getPlayer(){
+    public Player getPlayer() {
         return player;
     }
 
     public AttackEnum playerAttack(Enemy enemy) {
         return attack(enemy);
     }
+
     public AttackEnum attack(Enemy enemy) {
         return player.attack(enemy);
     }
-
-    //public void performAttack(Enemy enemy) {
-    //    AttackEnum result = player.attackEnemy(enemy);
-   // }
-
-
-
-
 
 }

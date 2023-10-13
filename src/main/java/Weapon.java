@@ -14,9 +14,6 @@ public abstract class Weapon extends Item {
         return damage;
     }
 
-    public int getCanuse() {
-        return canUse;
-    }
 
 
 

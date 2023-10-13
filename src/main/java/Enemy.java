@@ -2,16 +2,15 @@ public class Enemy {
 
 
     private String enemyName;
-    private int enemyhealth;
+    private int enemyHealth;
     private Weapon enemyWeapon;
     private Room currentRoom;
     private int damage;
 
 
-
-    public Enemy(String enemyName,int enemyhealth,Weapon enemyWeapon, Room currentRoom) {
+    public Enemy(String enemyName,int enemyHealth,Weapon enemyWeapon, Room currentRoom) {
         this.enemyName = enemyName;
-        this.enemyhealth = enemyhealth;
+        this.enemyHealth = enemyHealth;
         this.enemyWeapon = enemyWeapon;
         this.currentRoom = currentRoom;
     }
@@ -24,8 +23,8 @@ public class Enemy {
         return enemyName;
     }
 
-    public int getEnemyhealth() {
-        return enemyhealth;
+    public int getEnemyHealth() {
+        return enemyHealth;
     }
 
     public Weapon getEnemyWeapon() {
@@ -40,8 +39,8 @@ public class Enemy {
         this.enemyName = enemyName;
     }
 
-    public void setEnemyhealth(int enemyhealth) {
-        this.enemyhealth = enemyhealth;
+    public void setEnemyHealth(int enemyHealth) {
+        this.enemyHealth = enemyHealth;
     }
 
     public void setEnemyWeapon(Weapon enemyWeapon) {
@@ -55,9 +54,9 @@ public class Enemy {
 
 
     public void reduceHealth(int damage) {
-       enemyhealth -= damage;
-        if (enemyhealth < 0) {
-            enemyhealth= 0;
+       enemyHealth -= damage;
+        if (enemyHealth < 0) {
+            enemyHealth= 0;
         }
     }
 
@@ -67,7 +66,7 @@ public class Enemy {
     public String toString() {
         return "\n" + "Enemy:" +
                 " " + enemyName + '\'' +
-                "enemy health" + "=" + enemyhealth ;
+                "enemy health" + "=" + enemyHealth ;
     }
 
 

@@ -9,13 +9,13 @@ public class Attack {
         if (player.getHealthPoint() <= 0) {
             return AttackEnum.PLAYER_DEAD;
         }
-        if (enemy.getEnemyhealth() <= 0) {
+        if (enemy.getEnemyHealth() <= 0) {
             return AttackEnum.ENEMY_DEAD;
         }
         int damage = player.getCurrentWeapon().getDamage();
         enemy.reduceHealth(damage);
 
-        if (enemy.getEnemyhealth() <= 0) {
+        if (enemy.getEnemyHealth() <= 0) {
             player.setPlayerHealthPoint(5);
             return AttackEnum.ENEMY_DEAD;
         } else {

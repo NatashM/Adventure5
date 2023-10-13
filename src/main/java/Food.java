@@ -4,8 +4,9 @@ public class Food extends Item {
 
 
     public Food(String name, String Description, int healthPoint){
-        super(Description,name);
+        super(name,Description);
         this.healthPoint = healthPoint;
+        setHealthPoint();
     }
 
     public int getHealthPoint() {
@@ -17,11 +18,10 @@ public class Food extends Item {
     }
 
 
-
-
     @Override
     public String toString() {
-        return "items in the room;" + " " + getItemName()  + " " + getItemDescription() + " "+  " healthpoint: " + healthPoint;
+        return "The food in this room:" + " " + getItemName()+
+                "\n"  + " "+  " healthpoint: " + healthPoint;
     }
 }
 

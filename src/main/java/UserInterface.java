@@ -108,8 +108,8 @@ public class UserInterface {
                             System.out.println("You attack: " + input);
                             System.out.println("You dealt damage to " + input + ".");
                             System.out.println("Your health: " + adventure.getPlayer().getHealthPoint());
-                            if (enemy.getEnemyhealth() > 0) {
-                                System.out.println(input + " health: " + enemy.getEnemyhealth());
+                            if (enemy.getEnemyHealth() > 0) {
+                                System.out.println(input + " health: " + enemy.getEnemyHealth());
                             } else {
                                 System.out.println("You defeated " + input + "!");
                             }
@@ -117,8 +117,8 @@ public class UserInterface {
                             System.out.println("You shoot: " + input);
                             System.out.println("You shoot at " + input + ".");
                             System.out.println("Your health: " + adventure.getPlayer().getHealthPoint());
-                            if (enemy.getEnemyhealth() > 0) {
-                                System.out.println(input + " health: " + enemy.getEnemyhealth());
+                            if (enemy.getEnemyHealth() > 0) {
+                                System.out.println(input + " health: " + enemy.getEnemyHealth());
                             } else {
                                 System.out.println("You defeated " + input + "!");
                             }
