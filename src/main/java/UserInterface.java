@@ -36,6 +36,7 @@ public class UserInterface {
                     }
 
                 case "help":
+                case "h":
                     System.out.println("You can move in between rooms by writing 'go north', 'go south', 'go east' and 'go west'\n" +
                             "Not all rooms are connected! Maybe try a different direction." +
                             "Write 'exit' if you want to stop playing, \n" +
@@ -49,14 +50,17 @@ public class UserInterface {
                             "Type 'attack' to ATTACK A ENEMY!");
                     break;
 
-                case "look", "l":
+                case "look":
+                case"l":
                     System.out.println(adventure.toString().toLowerCase());
                     System.out.println(" You are in the following room:" + " " + adventure.getCurrentRoomDescription());
                     break;
-                case "inventory", "inv":
+                case "inventory":
+                case "inv":
                     adventure.player.viewInventory();
                     break;
                 case "drop":
+                case "d":
                     System.out.println("what do you want to drop?");
                     input = keyboard.nextLine();
                     adventure.setDropItem(input);
@@ -67,24 +71,26 @@ public class UserInterface {
                     }
                     break;
 
-                case "take", "t":
-                    System.out.println("What item do you want to take with you?");
+                case "take":
+                case "t":
+                    System.out.println("Which item do you want to take with you?");
                     input = keyboard.nextLine();
                     boolean takeItem = adventure.takeItem(input);
                     if (takeItem) {
-                        System.out.println("you took " + takeItem);
+                        System.out.println("you took it");
                     } else {
-                        System.out.println("sorry you can not take" + takeItem);
+                        System.out.println("sorry you cannot take" + takeItem);
                     }
                     break;
 
-                case "eat", "ea":
+                case "eat":
+                case "ea":
                     System.out.println("What do you want to eat?");
                     input = keyboard.nextLine();
                     EatEnum edible = adventure.eatFood(input);
 
                     if (edible == EatEnum.FOOD_FOUND) {
-                        System.out.println("you have now consumed " + input);
+                        System.out.println("You have now consumed " + input);
                         System.out.println("Your health is now: " + adventure.getHealthPoints());
                         System.out.println(adventure.healthLevelPoint());
 
@@ -94,12 +100,14 @@ public class UserInterface {
                         System.out.println("This food is not found, sorry..");
                     }
                     break;
-                case "health point", "health", "h":
+                case "health point":
+                case "health":
                     System.out.println("Your health point is now:" + " " + adventure.getHealthPoints());
                     System.out.println(adventure.healthLevelPoint());
                     break;
 
                 case "attack":
+                case "a":
                     input = keyboard.nextLine();
                     Enemy enemy = adventure.getPlayer().FindEnemyInRoom(input);
                     if (enemy != null) {
@@ -129,8 +137,9 @@ public class UserInterface {
                         System.out.println("No enemy found with the name: " + input);
                     }
                     break;
-                case "equip", "eq":
-                    System.out.println("what weapons do you want to equip");
+                case "equip":
+                case  "eq":
+                    System.out.println("what weapons do you want to equip?");
                     input = keyboard.nextLine();
                     AttackEnum equipAnswer = adventure.equip(input);
                     if (equipAnswer == AttackEnum.WEAPON_EQUIP) {

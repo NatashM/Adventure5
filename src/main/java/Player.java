@@ -12,7 +12,7 @@ public class Player {
 
     private int healthPoint;
 
-    private int Ammunition;
+    private int ammunition;
 
     private int canUse;
 
@@ -45,7 +45,7 @@ public class Player {
         return healthPoint;
     }
     public int getAmmunition() {
-        return Ammunition;
+        return ammunition;
     }
 
     public int getCanUse() {
@@ -110,7 +110,7 @@ public class Player {
         ArrayList<Enemy> enemies = currentRoom.getEnemies();
 
         if(enemies.isEmpty()) {
-            System.out.println("You are safe,there is no enemies.");
+            System.out.println("You are safe,there is no enemies here!.");
         }else {
             System.out.println("The enemies in this room are:");
             for(Enemy enemy : enemies){
@@ -140,7 +140,7 @@ public class Player {
         if (item != null) {
             dropItem(itemName);
             currentRoom.addItem(item);
-            System.out.println("you have drop" + itemName);
+            System.out.println("You have drop:" + itemName);
         }
 
     }
@@ -221,11 +221,11 @@ public class Player {
         String healthLevelPoints = keyboard.nextLine();
 
         if (healthPoint > 0 && healthPoint <= 10) {
-            return healthLevelPoints = "ohh hurry you are very very low on health points.";
+            return healthLevelPoints = "ohh hurry you are very low on health points.";
         } else if (healthPoint > 10 && healthPoint <= 15) {
-            return healthLevelPoints = "Your are in real bad shape, try get som health points";
+            return healthLevelPoints = "Your are in real bad shape, try to get some health points";
         } else {
-            return "Your health level points are now" + healthPoint;
+            return "Your health level points are:" + healthPoint;
         }
 
 

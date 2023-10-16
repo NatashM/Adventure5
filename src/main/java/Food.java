@@ -20,7 +20,7 @@ public class Food extends Item {
 
     @Override
     public String toString() {
-        return "The food in this room:" + " " + getItemName()+
+        return "The food in this room:" + " " + getItemName() +
                 "\n"  + " "+  " healthpoint: " + healthPoint;
     }
 }
