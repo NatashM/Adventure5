@@ -237,6 +237,7 @@ public class Player {
     }
 
     public String move(String direction) {
+
         Room nextRoom = null;
         switch (direction) {
             case "n", "north", "go north":
@@ -252,6 +253,7 @@ public class Player {
                 nextRoom = currentRoom.getWest();
                 break;
         }
+        //opdater current room
         if (nextRoom != null) {
             currentRoom = nextRoom;
             return currentRoom.getRoomDescription();
@@ -259,7 +261,6 @@ public class Player {
             return "You have chosen a path that leads nowhere. Try a different path.";
         }
     }
-
 }
 
 

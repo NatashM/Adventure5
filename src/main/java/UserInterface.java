@@ -56,7 +56,7 @@ public class UserInterface {
                     System.out.println(" You are in the following room:" + " " + adventure.getCurrentRoomDescription());
                     break;
                 case "inventory":
-                case "inv":
+                case "in":
                     adventure.player.viewInventory();
                     break;
                 case "drop":
@@ -79,12 +79,11 @@ public class UserInterface {
                     if (takeItem) {
                         System.out.println("you took it");
                     } else {
-                        System.out.println("sorry you cannot take" + takeItem);
+                        System.out.println("sorry you can not take" + " " + input);
                     }
                     break;
 
                 case "eat":
-                case "ea":
                     System.out.println("What do you want to eat?");
                     input = keyboard.nextLine();
                     EatEnum edible = adventure.eatFood(input);
@@ -150,7 +149,6 @@ public class UserInterface {
                         System.out.println("your weapon is not equipped");
                     }
                     break;
-
                 default:
                     if (input.startsWith("go")) {
                         String direction = input.substring(3);

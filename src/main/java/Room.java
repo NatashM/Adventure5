@@ -7,8 +7,8 @@ public class Room {
     private Room south;
     private Room east;
     private Room west;
-    private ArrayList<Item> items = new ArrayList<>();
 
+    private ArrayList<Item> items = new ArrayList<>();
     private final ArrayList<Enemy> enemies = new ArrayList<>();
 
 
@@ -16,18 +16,13 @@ public class Room {
     public Room(String name, String description) {
         this.name = name;
         this.description = description;
-        this.north = null;
-        this.south = null;
-        this.east = null;
-        this.west = null;
-
     }
 
     public String getRoomDescription() {
         final String WHITE_BOLD = "\033[1;97m";
         final String RESET_BOLD = "\033[0m";
         String formattedName = WHITE_BOLD + name + RESET_BOLD;
-        return formattedName + "\n" + description + "\n" + items;
+        return formattedName + "\n" + description + "\n" + items + enemies;
     }
 
 

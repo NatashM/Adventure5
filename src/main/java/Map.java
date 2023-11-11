@@ -71,12 +71,12 @@ public class Map {
         room9.addEnemy(enemy9);
 
 
+        //spil start
         currentRoom = room1;
 
+        // forbindelser mellem room
         room1.setEast(room2);
         room1.setSouth(room4);
-
-
 
 
         room2.setEast(room3);

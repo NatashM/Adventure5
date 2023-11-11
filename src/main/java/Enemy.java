@@ -65,8 +65,8 @@ public class Enemy {
     @Override
     public String toString() {
         return "\n" + "Enemy:" +
-                " " + enemyName + '\'' +
-                "enemy health" + "=" + enemyHealth ;
+                " " + enemyName + " " + "=" + " " +
+                "Health:" + " " + "=" + " " + enemyHealth ;
     }
 
 
