@@ -45,8 +45,7 @@ public  class Item {
     @Override
     public String toString() {
         return
-                itemName + " "
-                        + itemDescription + " " + "\n" ;
+                "There is:" + " " + itemName + " " + itemDescription + " ";
     }
 
 

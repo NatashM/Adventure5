@@ -16,8 +16,9 @@ public class MeleeWeapon extends Weapon {
     @Override
     public String toString() {
         return
-                "\n"+ " " +"Melee weapon:" + " " + getItemName() +"\n " + "Damage" + " " + "=" + " " + damage + "\n"+
-                '.';
+                "\n"+ "Melee weapon:" + " " + getItemName() +
+                        "\n" + "Damage" + " " + "=" + " " + damage;
+
     }
 
 }
